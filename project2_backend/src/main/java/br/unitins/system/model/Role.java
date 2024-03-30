@@ -1,4 +1,4 @@
-package br.unitins.model;
+package br.unitins.system.model;
 
 public enum Role {
     

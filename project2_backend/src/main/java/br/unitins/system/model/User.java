@@ -1,20 +1,19 @@
-package br.unitins.model;
-
-import java.util.Date;
+package br.unitins.system.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-public class User {
-    
+@Table(name = "users")
+public class User extends DefaultEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idUser;
 
     @Column(nullable = true)
     private String cpf;
@@ -31,23 +30,13 @@ public class User {
     @Column(nullable = true)
     private String phoneNumber;
 
-    @Column(nullable = true)
-    private Date createdAt;
-
-    @Column(nullable = true)
-    private Date updatedAt;
-
     @Column(nullable = false)
     private Role role;
 
     //Getter and Setters
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public Long getIdUser() {
+        return idUser;
     }
 
     public String getCpf() {
@@ -90,22 +79,6 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     public Role getRole() {
         return role;
     }
@@ -113,8 +86,4 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
-
-    
-
-    
 }

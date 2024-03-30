@@ -1,10 +1,10 @@
-package br.unitins.repository;
+package br.unitins.system.repository;
 
 import java.util.List;
 
-import br.unitins.model.Role;
-import br.unitins.model.User;
-import io.quarkus.hibernate.orm.panache.PanacheQuery;
+import br.unitins.system.model.Role;
+import br.unitins.system.model.User;
+// import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -29,7 +29,7 @@ public class UserRepository implements PanacheRepository<User> {
 
     //Consulta de Nome
 
-    public List<User> findByNome (String name) {
+    public List<User> findByName (String name) {
 
              if (name == null)
                  return null;
@@ -37,13 +37,13 @@ public class UserRepository implements PanacheRepository<User> {
              return find("FROM User WHERE UNACCENT(UPPER(name)) LIKE UNACCENT(?1)", "%" + name.toUpperCase() + "%").list();
          }
 
-    public PanacheQuery<User> findByName(String name){
+    // public PanacheQuery<User> findByName(String name){
 
-        if (name == null)
-            return null;
+    //     if (name == null)
+    //         return null;
 
-        return find("UPPER(name) LIKE ?1 ", "%"+name.toUpperCase()+"%");
-    }
+    //     return find("UPPER(name) LIKE ?1 ", "%"+name.toUpperCase()+"%");
+    // }
 
     // Encontrando todos os usuários com estes papeis
     // Obs: Não testei KKKKK
