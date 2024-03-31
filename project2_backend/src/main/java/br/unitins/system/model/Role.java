@@ -1,11 +1,13 @@
 package br.unitins.system.model;
 
+import java.util.Arrays;
+
 public enum Role {
-    
+
     ADMIN(1, "Admin"),
     USER_EMPLOYEE(2, "Funcionario"),
     USER_CLIENT(3, "Cliente");
-    
+
     private int id;
     private String label;
 
@@ -29,7 +31,7 @@ public enum Role {
             return null;
 
         for (Role role : Role.values()) {
-            
+
             if (id == role.id)
                 return role;
         }
@@ -37,4 +39,7 @@ public enum Role {
         throw new IllegalArgumentException("Papel não existe");
     }
 
+    public static String[] getAllNames() {
+        return Arrays.asList(Role.values()).stream().map(r -> r.getLabel()).toArray(String[]::new);
+    }
 }
