@@ -32,9 +32,8 @@ public class UserResource {
     UserService userService;
 
     @GET
-    @RolesAllowed("Cliente")
+    @RolesAllowed({"Admin", "Funcionario", "Cliente"})
     public List<User> getAll() {
-
         return userService.getAll();
     }
 
@@ -48,7 +47,6 @@ public class UserResource {
     @POST
     @RolesAllowed({"Admin", "Funcionario", "Cliente"})
     public Response insert(User user) {
-
         userService.insert(user);
 
         return Response
@@ -60,7 +58,6 @@ public class UserResource {
     @Path("/{id}")
     @RolesAllowed({"Admin", "Funcionario", "Cliente"})
     public Response update(@PathParam("id") Long id, User user) throws NotFoundException {
-
         userService.update(id, user);
 
         return Response
@@ -72,7 +69,6 @@ public class UserResource {
     @Path("/{id}")
     @RolesAllowed({"Admin", "Funcionario", "Cliente"})
     public Response delete(@PathParam("id") Long id) throws IllegalArgumentException, NotFoundException {
-
         userService.delete(id);
 
         return Response
